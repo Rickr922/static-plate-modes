@@ -1,0 +1,7 @@
+.DS_Store
+xcuserdata/
+
+vsproj/plate-modes/x64/*
+vsproj/plate-modes/.vs/*
+
+

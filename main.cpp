@@ -1,15 +1,15 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Plate reverb with nonlinear saturator
-// Matlab Source by: Riccardo Russo, University of Bologna
-// C++ implementation by: Matthe Hamilton, University of Bologna
+// Modal Plate Reverb
+// C++ implementation by: Riccardo Russo, University of Bologna
 //
-// Date: 12-February-2023
+// Date: 11-July-2023
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #include <iostream>
 #include <cmath>
 #include <complex>
-#include "../nemus-cpp-audio-tools/src/audio.h"
+#include "nemus-cpp-audio-tools/src/audio.h"
+#include <chrono>
 
 ///
 enum class NonLinearityFunction
