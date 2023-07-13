@@ -35,5 +35,8 @@
     <ClInclude Include="..\..\nemus-cpp-audio-tools\src\nemus_constants.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\plateModalData.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

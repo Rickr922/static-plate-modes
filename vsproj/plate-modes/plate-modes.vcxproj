@@ -147,6 +147,7 @@
     <ClInclude Include="..\..\nemus-cpp-audio-tools\src\Filter.hpp" />
     <ClInclude Include="..\..\nemus-cpp-audio-tools\src\nemus.h" />
     <ClInclude Include="..\..\nemus-cpp-audio-tools\src\nemus_constants.h" />
+    <ClInclude Include="..\..\plateModalData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
