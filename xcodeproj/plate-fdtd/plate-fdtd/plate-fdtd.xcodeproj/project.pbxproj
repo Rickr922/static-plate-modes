@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EAEA04E2A754F2B000C7403 /* Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EAEA04C2A754F2B000C7403 /* Filter.cpp */; };
-		3EEC0D442AC6C34C00E28243 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC0D432AC6C34C00E28243 /* main.cpp */; };
+		3EEC0D5A2AC6CB6000E28243 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC0D582AC6CB6000E28243 /* main.cpp */; };
+		3EEC0D602AC6CB7100E28243 /* Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC0D5D2AC6CB7100E28243 /* Filter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3EAEA03A2A754F05000C7403 /* CopyFiles */ = {
+		3EEC0D4C2AC6CB4A00E28243 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,18 +24,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3EAEA03C2A754F05000C7403 /* plate-modes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "plate-modes"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EAEA0492A754F2B000C7403 /* nemus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nemus.h; path = "../../../nemus-cpp-audio-tools/src/nemus.h"; sourceTree = "<group>"; };
-		3EAEA04A2A754F2B000C7403 /* Filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Filter.hpp; path = "../../../nemus-cpp-audio-tools/src/Filter.hpp"; sourceTree = "<group>"; };
-		3EAEA04B2A754F2B000C7403 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = "../../../nemus-cpp-audio-tools/src/audio.h"; sourceTree = "<group>"; };
-		3EAEA04C2A754F2B000C7403 /* Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Filter.cpp; path = "../../../nemus-cpp-audio-tools/src/Filter.cpp"; sourceTree = "<group>"; };
-		3EAEA04D2A754F2B000C7403 /* nemus_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nemus_constants.h; path = "../../../nemus-cpp-audio-tools/src/nemus_constants.h"; sourceTree = "<group>"; };
-		3EEC0D422AC6C34C00E28243 /* plateModalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plateModalData.h; sourceTree = SOURCE_ROOT; };
-		3EEC0D432AC6C34C00E28243 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		3EEC0D4E2AC6CB4A00E28243 /* plate-fdtd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "plate-fdtd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EEC0D582AC6CB6000E28243 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
+		3EEC0D592AC6CB6000E28243 /* plateFDTDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plateFDTDData.h; path = ../../plateFDTDData.h; sourceTree = "<group>"; };
+		3EEC0D5B2AC6CB7100E28243 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = "../../../../nemus-cpp-audio-tools/src/audio.h"; sourceTree = "<group>"; };
+		3EEC0D5C2AC6CB7100E28243 /* Filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Filter.hpp; path = "../../../../nemus-cpp-audio-tools/src/Filter.hpp"; sourceTree = "<group>"; };
+		3EEC0D5D2AC6CB7100E28243 /* Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Filter.cpp; path = "../../../../nemus-cpp-audio-tools/src/Filter.cpp"; sourceTree = "<group>"; };
+		3EEC0D5E2AC6CB7100E28243 /* nemus_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nemus_constants.h; path = "../../../../nemus-cpp-audio-tools/src/nemus_constants.h"; sourceTree = "<group>"; };
+		3EEC0D5F2AC6CB7100E28243 /* nemus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nemus.h; path = "../../../../nemus-cpp-audio-tools/src/nemus.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3EAEA0392A754F05000C7403 /* Frameworks */ = {
+		3EEC0D4B2AC6CB4A00E28243 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,71 +45,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3EAEA0332A754F05000C7403 = {
+		3EEC0D452AC6CB4A00E28243 = {
 			isa = PBXGroup;
 			children = (
-				3EAEA03E2A754F05000C7403 /* plate-modes */,
-				3EAEA03D2A754F05000C7403 /* Products */,
+				3EEC0D502AC6CB4A00E28243 /* plate-fdtd */,
+				3EEC0D4F2AC6CB4A00E28243 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3EAEA03D2A754F05000C7403 /* Products */ = {
+		3EEC0D4F2AC6CB4A00E28243 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3EAEA03C2A754F05000C7403 /* plate-modes */,
+				3EEC0D4E2AC6CB4A00E28243 /* plate-fdtd */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3EAEA03E2A754F05000C7403 /* plate-modes */ = {
+		3EEC0D502AC6CB4A00E28243 /* plate-fdtd */ = {
 			isa = PBXGroup;
 			children = (
-				3EEC0D432AC6C34C00E28243 /* main.cpp */,
-				3EEC0D422AC6C34C00E28243 /* plateModalData.h */,
-				3EAEA04B2A754F2B000C7403 /* audio.h */,
-				3EAEA04C2A754F2B000C7403 /* Filter.cpp */,
-				3EAEA04A2A754F2B000C7403 /* Filter.hpp */,
-				3EAEA04D2A754F2B000C7403 /* nemus_constants.h */,
-				3EAEA0492A754F2B000C7403 /* nemus.h */,
+				3EEC0D582AC6CB6000E28243 /* main.cpp */,
+				3EEC0D592AC6CB6000E28243 /* plateFDTDData.h */,
+				3EEC0D5B2AC6CB7100E28243 /* audio.h */,
+				3EEC0D5D2AC6CB7100E28243 /* Filter.cpp */,
+				3EEC0D5C2AC6CB7100E28243 /* Filter.hpp */,
+				3EEC0D5E2AC6CB7100E28243 /* nemus_constants.h */,
+				3EEC0D5F2AC6CB7100E28243 /* nemus.h */,
 			);
-			path = "plate-modes";
+			path = "plate-fdtd";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3EAEA03B2A754F05000C7403 /* plate-modes */ = {
+		3EEC0D4D2AC6CB4A00E28243 /* plate-fdtd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EAEA0432A754F05000C7403 /* Build configuration list for PBXNativeTarget "plate-modes" */;
+			buildConfigurationList = 3EEC0D552AC6CB4A00E28243 /* Build configuration list for PBXNativeTarget "plate-fdtd" */;
 			buildPhases = (
-				3EAEA0382A754F05000C7403 /* Sources */,
-				3EAEA0392A754F05000C7403 /* Frameworks */,
-				3EAEA03A2A754F05000C7403 /* CopyFiles */,
+				3EEC0D4A2AC6CB4A00E28243 /* Sources */,
+				3EEC0D4B2AC6CB4A00E28243 /* Frameworks */,
+				3EEC0D4C2AC6CB4A00E28243 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "plate-modes";
-			productName = "plate-modes";
-			productReference = 3EAEA03C2A754F05000C7403 /* plate-modes */;
+			name = "plate-fdtd";
+			productName = "plate-fdtd";
+			productReference = 3EEC0D4E2AC6CB4A00E28243 /* plate-fdtd */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3EAEA0342A754F05000C7403 /* Project object */ = {
+		3EEC0D462AC6CB4A00E28243 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					3EAEA03B2A754F05000C7403 = {
+					3EEC0D4D2AC6CB4A00E28243 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 3EAEA0372A754F05000C7403 /* Build configuration list for PBXProject "plate-modes" */;
+			buildConfigurationList = 3EEC0D492AC6CB4A00E28243 /* Build configuration list for PBXProject "plate-fdtd" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,30 +117,30 @@
 				en,
 				Base,
 			);
-			mainGroup = 3EAEA0332A754F05000C7403;
-			productRefGroup = 3EAEA03D2A754F05000C7403 /* Products */;
+			mainGroup = 3EEC0D452AC6CB4A00E28243;
+			productRefGroup = 3EEC0D4F2AC6CB4A00E28243 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3EAEA03B2A754F05000C7403 /* plate-modes */,
+				3EEC0D4D2AC6CB4A00E28243 /* plate-fdtd */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3EAEA0382A754F05000C7403 /* Sources */ = {
+		3EEC0D4A2AC6CB4A00E28243 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EEC0D442AC6C34C00E28243 /* main.cpp in Sources */,
-				3EAEA04E2A754F2B000C7403 /* Filter.cpp in Sources */,
+				3EEC0D5A2AC6CB6000E28243 /* main.cpp in Sources */,
+				3EEC0D602AC6CB7100E28243 /* Filter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3EAEA0412A754F05000C7403 /* Debug */ = {
+		3EEC0D532AC6CB4A00E28243 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -198,7 +198,7 @@
 			};
 			name = Debug;
 		};
-		3EAEA0422A754F05000C7403 /* Release */ = {
+		3EEC0D542AC6CB4A00E28243 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,7 +249,7 @@
 			};
 			name = Release;
 		};
-		3EAEA0442A754F05000C7403 /* Debug */ = {
+		3EEC0D562AC6CB4A00E28243 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -257,7 +257,7 @@
 			};
 			name = Debug;
 		};
-		3EAEA0452A754F05000C7403 /* Release */ = {
+		3EEC0D572AC6CB4A00E28243 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -268,25 +268,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3EAEA0372A754F05000C7403 /* Build configuration list for PBXProject "plate-modes" */ = {
+		3EEC0D492AC6CB4A00E28243 /* Build configuration list for PBXProject "plate-fdtd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EAEA0412A754F05000C7403 /* Debug */,
-				3EAEA0422A754F05000C7403 /* Release */,
+				3EEC0D532AC6CB4A00E28243 /* Debug */,
+				3EEC0D542AC6CB4A00E28243 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EAEA0432A754F05000C7403 /* Build configuration list for PBXNativeTarget "plate-modes" */ = {
+		3EEC0D552AC6CB4A00E28243 /* Build configuration list for PBXNativeTarget "plate-fdtd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EAEA0442A754F05000C7403 /* Debug */,
-				3EAEA0452A754F05000C7403 /* Release */,
+				3EEC0D562AC6CB4A00E28243 /* Debug */,
+				3EEC0D572AC6CB4A00E28243 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3EAEA0342A754F05000C7403 /* Project object */;
+	rootObject = 3EEC0D462AC6CB4A00E28243 /* Project object */;
 }

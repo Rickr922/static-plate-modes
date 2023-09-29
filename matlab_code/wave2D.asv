@@ -29,15 +29,41 @@ rhoH = rho*Lz;
 T = 3000; %1000;                      %[N] Tension
 c = T/(rho*Lz);
 
+
+
 % Calculate grid spacing from variables
 h = c * k*sqrt(2);
 Nx = floor(Lx/h);
 Ny = floor(Ly/h);
 
-% Nx = 70;
-% Ny = 70;
-
 lambda = c*k/h;
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
+%%%% C++ Header output
+fileID = fopen('../xcodeproj/plate-fdtd/plateFDTDData.h', 'wt');
+
+if fileID < 3
+    disp('error opening file');
+end
+
+fprintf(fileID, '#ifndef plateFDTDData\n#define plateFDTDData\n\n');
+
+fprintf(fileID, '#define c %i\n', h);
+fprintf(fileID, '#define SR %i\n', SR);
+fprintf(fileID, '#define h %i\n\n', h);
+
+fprintf(fileID, '#define h %i\n\n', h);
+
+fprintf(fileID, '#define Nx %i\n', Nx);
+fprintf(fileID, '#define Ny %i\n\n', Ny);
+
+fprintf(fileID, '#define Lx %i\n', Lx);
+fprintf(fileID, '#define Ly %i\n\n', Ly);
+
+fprintf(fileID, '#endif');
+status = fclose(fileID);
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 
 inPoint = [0.52*Lx,0.53*Ly];
 outPoint = [0.47*Lx,0.62*Ly];
@@ -57,12 +83,6 @@ loO = floor(outPoint(1)/h);
 moO = floor(outPoint(2)/h);
 alphaxO = outPoint(1)/h - lo;
 alphayO = outPoint(2)/h - mo;
-
-JcoeffO = zeros(Nx-1,Ny-1);
-JcoeffO(loO,moO) = (1-alphaxO) * (1-alphayO);
-JcoeffO(loO, moO+1) = (1-alphaxO)*alphayO;
-JcoeffO(loO+1, moO) = alphaxO*(1-alphayO);
-JcoeffO(loO+1,moO+1) = alphaxO*alphayO;
 
 uNext = zeros(Nx,Ny);
 u = zeros(Nx,Ny);
@@ -117,16 +137,15 @@ for n=1:timeSamples
 %         u((1:width) + floor(Nx/2)-(width/2),(1:width) + floor(Ny/2)-(width/2)) = window2(width,width,'hann');
 %     end
     
-    %osservo solo UN punto della "corda"
-    out(n)= uNext(floor(outPoint(1)/h),floor(outPoint(2)/h));
+    % out(n)= uNext(floor(outPoint(1)/h),floor(outPoint(2)/h));
+    out(n)= (1 - alphaxO) * (1 - alphayO) * uNext(loO, moO) + (1 - alphaxO) * alphayO*uNext(loO, moO + 1) + alphaxO * (1 - alphayO)*uNext(loO + 1, moO) + alphaxO * alphayO * uNext(loO + 1, moO + 1);
     
-    surf(uNext)
-    %plot(u);
-    zlim([-10,10]);
-    view([45 45]);
-    %xlim([50,150]);
-    drawnow;
-    pause(50/1000)
+    % surf(uNext)
+    % zlim([-10,10]);
+    % view([45 45]);
+    % %xlim([50,150]);
+    % drawnow;
+    % pause(50/1000)
     
     uPrev = u;
     u = uNext;
@@ -147,7 +166,7 @@ function [excit,SR,k,timeSamples,timeVec,durSec]=ExcitSignal(amp,OSFac,durSec,ex
                 disp('Zero input duration');
                 return
             end
-            SR = OSFac*44100;
+            SR = OSFac*48000;
             timeSamples = durSec*SR;
             k = 1/SR;
             timeVec = (1:timeSamples)*k;

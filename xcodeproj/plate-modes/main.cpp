@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "plateModalData.h"
-#include "nemus-cpp-audio-tools/src/audio.h"
+#include "../../nemus-cpp-audio-tools/src/audio.h"
 #include <chrono>
 
 #define PI 3.141592653589793
