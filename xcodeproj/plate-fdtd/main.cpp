@@ -24,6 +24,7 @@ int main(int argc, const char * argv[])
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     double k = 1.0 / SR;
+    double k2 = k * k;
     
     float lambda = C * k / h;
     float lambda2 = lambda * lambda;
@@ -31,8 +32,8 @@ int main(int argc, const char * argv[])
     float sigma0 = 5.f;
     float dampCoeff = 1 + sigma0 * k;
     
-    float inPoint[] = {(int)0.52f * Lx / h, (int)0.53f * Ly / h};
-    float outPoint[] = {(int)0.52f * Lx / h, (int)0.53f * Ly / h};
+    float inPoint[] = {0.52f * Lx, 0.53f * Ly};
+    float outPoint[] = {0.52f * Lx, 0.53f * Ly};
     
     std::cout << "Nx: " << Nx << '\n';
     std::cout << "Ny: " << Ny << '\n';
@@ -89,17 +90,19 @@ int main(int argc, const char * argv[])
     {
         double exc = excit[n];
         
-        for (int i = 0; i < Nx; ++i)
-            for (int j = 0; j < Ny; ++j)
+        for (int i = 1; i < Nx - 1; ++i)
+            for (int j = 1; j < Ny - 1; ++j)
             {
-                uNext[i][j] =2 * (1 - 2 * lambda2) * u[i][j] / dampCoeff + (sigma0 * k - 1) * uPrev[i][j] / dampCoeff + lambda2 * (u[i + 1][j] + u[i - 1][j] + u[i][j + 1] + u[i][j - 1]) / dampCoeff + Jcoeff[i][j] * exc / dampCoeff;
+                int I = 0;
+                if ((i ==5) && (j ==5)) I = 1;
+                uNext[i][j] = 2 * (1 - 2 * lambda2) * u[i][j] / dampCoeff + (sigma0 * k - 1) * uPrev[i][j] / dampCoeff + lambda2 * (u[i + 1][j] + u[i - 1][j] + u[i][j + 1] + u[i][j - 1]) / dampCoeff + k2 * Jcoeff[i][j] * exc / dampCoeff;
             }
         
         output[n] = (1 - alphaxO) * (1 - alphayO) * uNext[loO][moO] + (1 - alphaxO) * alphayO*uNext[loO][moO + 1] + alphaxO * (1 - alphayO)*uNext[loO + 1][moO] + alphaxO * alphayO * uNext[loO + 1][moO + 1];
         
-        for (int i = 0; i < Nx; ++i)
+        for (int i = 1; i < Nx - 1; ++i)
         {
-            for (int j = 0; j < Ny; ++j)
+            for (int j = 1; j < Ny - 1; ++j)
             {
                 uPrev[i][j] = u[i][j];
                 u[i][j] = uNext[i][j];

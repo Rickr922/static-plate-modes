@@ -48,10 +48,8 @@ end
 
 fprintf(fileID, '#ifndef plateFDTDData\n#define plateFDTDData\n\n');
 
-fprintf(fileID, '#define c %i\n', h);
+fprintf(fileID, '#define C %i\n', c);
 fprintf(fileID, '#define SR %i\n', SR);
-fprintf(fileID, '#define h %i\n\n', h);
-
 fprintf(fileID, '#define h %i\n\n', h);
 
 fprintf(fileID, '#define Nx %i\n', Nx);
@@ -103,7 +101,7 @@ for n=1:timeSamples
 %     %Full Dirichlet
         for l=2:Nx-1
             for m = 2:Ny-1
-                uNext(l,m) = 2*(1-2*lambda^2)*u(l,m) / dampCoeff + (sigma0*k - 1)*uPrev(l,m)/dampCoeff + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1) + u(l,m-1)) / dampCoeff + Jcoeff(l,m)*exc/dampCoeff;
+                uNext(l,m) = 2*(1-2*lambda^2)*u(l,m) / dampCoeff + (sigma0*k - 1)*uPrev(l,m)/dampCoeff + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1) + u(l,m-1)) / dampCoeff + k^2*Jcoeff(l,m)*exc/dampCoeff;
             end
         end
     elseif boundaryCond == 1

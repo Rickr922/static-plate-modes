@@ -1,7 +1,7 @@
 #ifndef plateFDTDData
 #define plateFDTDData
 
-#define C 7.014948e-02
+#define C 2.380952e+03
 #define SR 48000
 #define h 7.014948e-02
 
