@@ -117,7 +117,7 @@ end
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 %%%% C++ Header output
-fileID = fopen('plateModalData.h', 'wt');
+fileID = fopen('../plateModalData.h', 'wt');
 
 if fileID < 3
     disp('error opening file');
