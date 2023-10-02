@@ -131,7 +131,7 @@ fprintf(fileID, '};\n\n');
 fprintf(fileID, 'static float S[%i][%i] = {', size(S,1), size(S,2));
 for i = 1:size(S,1)
     for j = 1:size(S,2)
-        fprintf(fileID,'%f, ',full(S(i,j)));
+        fprintf(fileID,'%f, ',full(D(i,j)));
     end
    fprintf(fileID,'\n');
 end
