@@ -98,7 +98,7 @@ if fileID < 3
     disp('error opening file');
 end
 
-fprintf(fileID, '#ifndef plateFDTDStiffData\n#define plateStiffFDTDData\n\n');
+fprintf(fileID, '#ifndef plateFDTDStiffData\n#define plateFDTDStiffData\n\n');
 
 fprintf(fileID, '#define SR %i\n', SR);
 fprintf(fileID, '#define h %i\n\n', h);

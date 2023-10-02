@@ -1,5 +1,5 @@
 #ifndef plateFDTDStiffData
-#define plateStiffFDTDData
+#define plateFDTDStiffData
 
 #define SR 44100
 #define h 8.817183e-03
