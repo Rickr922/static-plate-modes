@@ -5,8 +5,6 @@
 #define SR 48000
 #define h 7.014948e-02
 
-#define h 7.014948e-02
-
 #define Nx 14
 #define Ny 28
 

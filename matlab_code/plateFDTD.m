@@ -89,6 +89,47 @@ B = sparse((2*eye(totN)-kappa^2*k^2*DD)/(1+sigma0*k));
 I = sparse(eye(totN));
 C = ((1-sigma0*k)/(1+sigma0*k))*I;
 
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
+%%%% C++ Header output
+fileID = fopen('../xcodeproj/plate-fdtd-stiff/plateFDTDStiffData.h', 'wt');
+
+if fileID < 3
+    disp('error opening file');
+end
+
+fprintf(fileID, '#ifndef plateFDTDStiffData\n#define plateStiffFDTDData\n\n');
+
+fprintf(fileID, '#define SR %i\n', SR);
+fprintf(fileID, '#define h %i\n\n', h);
+
+fprintf(fileID, '#define Nx %i\n', Nx);
+fprintf(fileID, '#define Ny %i\n\n', Ny);
+fprintf(fileID, '#define totN %i\n\n', totN);
+
+fprintf(fileID, '#define Lx %i\n', Lx);
+fprintf(fileID, '#define Ly %i\n\n', Ly);
+
+fprintf(fileID, 'static float B[%i][%i] = {', size(B,1), size(B,2));
+for i = 1:size(B,1)
+    for j = 1:size(B,2)
+        fprintf(fileID,'%f, ',full(B(i,j)));
+    end
+   fprintf(fileID,'\n');
+end
+fprintf(fileID, '};\n\n');
+
+fprintf(fileID, 'static float D[%i][%i] = {', size(D,1), size(D,2));
+for i = 1:size(D,1)
+    for j = 1:size(D,2)
+        fprintf(fileID,'%f, ',full(D(i,j)));
+    end
+   fprintf(fileID,'\n');
+end
+fprintf(fileID, '};\n\n');
+
+fprintf(fileID, '#endif');
+status = fclose(fileID);
+
 %% Simulation
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 %%%%% Initializing vectors

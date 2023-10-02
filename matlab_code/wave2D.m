@@ -1,8 +1,8 @@
 clear all; 
 close all;
 
-boundaryCond = 0;   %0 = Dirichlet; 1 = Neumann
-init = 0;           %sets if to initialize the states or not
+boundaryCond = 1;   %0 = Dirichlet; 1 = Neumann
+init = 1;           %sets if to initialize the states or not
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 %%%%% Excitation Signal
@@ -108,25 +108,25 @@ for n=1:timeSamples
         %Full Neumann
         for l=1:Nx
             if l==1
-                uNext(l,1) = 2*(1-lambda^2)*u(l,1) - uPrev(l,1) + lambda^2*(u(l+1,1) + u(l,2)) + Jcoeff(l,m)*exc;
+                uNext(l,1) = 2*(1-lambda^2)*u(l,1) - uPrev(l,1) + lambda^2*(u(l+1,1) + u(l,2));
                 for m = 2:(Ny-1) %taking corners into account
-                    uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l,m+1) + u(l,m-1))  + Jcoeff(l,m)*exc;
+                    uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l,m+1) + u(l,m-1));
                 end
-                uNext(l,Ny) = 2*(1-lambda^2)*u(l,Ny) - uPrev(l,Ny) + lambda^2*(u(l+1,Ny) + u(l,Ny-1)) + Jcoeff(l,m)*exc;
+                uNext(l,Ny) = 2*(1-lambda^2)*u(l,Ny) - uPrev(l,Ny) + lambda^2*(u(l+1,Ny) + u(l,Ny-1));
             elseif l==Nx
-                uNext(l,1) = 2*(1-lambda^2)*u(l,1) - uPrev(l,1) + lambda^2*(u(l-1,1) + u(l,2)) + Jcoeff(l,m)*exc;
+                uNext(l,1) = 2*(1-lambda^2)*u(l,1) - uPrev(l,1) + lambda^2*(u(l-1,1) + u(l,2));
                 for m = 2:(Ny-1) %taking corners into account
-                    uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l-1,m) + u(l,m+1) + u(l,m-1)) + Jcoeff(l,m)*exc;
+                    uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l-1,m) + u(l,m+1) + u(l,m-1));
                 end
-                uNext(l,Ny) = 2*(1-lambda^2)*u(l,Ny) - uPrev(l,Ny) + lambda^2*(u(l-1,Ny) + u(l,Ny-1)) + Jcoeff(l,m)*exc;
+                uNext(l,Ny) = 2*(1-lambda^2)*u(l,Ny) - uPrev(l,Ny) + lambda^2*(u(l-1,Ny) + u(l,Ny-1));
             else
                 for m = 1:Ny
                     if m==1
-                        uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1)) + Jcoeff(l,m)*exc;
+                        uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1));
                     elseif m==Ny
-                        uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m-1)) + Jcoeff(l,m)*exc;
+                        uNext(l,m) = (2-3*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m-1));
                     else
-                        uNext(l,m) = 2*(1-2*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1) + u(l,m-1)) + Jcoeff(l,m)*exc;
+                        uNext(l,m) = 2*(1-2*lambda^2)*u(l,m) - uPrev(l,m) + lambda^2*(u(l+1,m) + u(l-1,m) + u(l,m+1) + u(l,m-1));
                     end
                 end
             end
@@ -140,12 +140,12 @@ for n=1:timeSamples
     % out(n)= uNext(floor(outPoint(1)/h),floor(outPoint(2)/h));
     out(n)= (1 - alphaxO) * (1 - alphayO) * uNext(loO, moO) + (1 - alphaxO) * alphayO*uNext(loO, moO + 1) + alphaxO * (1 - alphayO)*uNext(loO + 1, moO) + alphaxO * alphayO * uNext(loO + 1, moO + 1);
     
-    % surf(uNext)
-    % zlim([-10,10]);
-    % view([45 45]);
+    surf(uNext)
+    zlim([-1,1]);
+    view([45 45]);
     % %xlim([50,150]);
-    % drawnow;
-    % pause(50/1000)
+    drawnow;
+    pause(50/1000)
     
     uPrev = u;
     u = uNext;
