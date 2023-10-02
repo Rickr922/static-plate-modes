@@ -85,8 +85,8 @@ totN = (Nx-1)*(Ny-1);
 Dxx = sparse(toeplitz([-2/h^2;1/h^2;zeros(Nx-3,1)]));
 Dyy = sparse(toeplitz([-2/h^2;1/h^2;zeros(Ny-3,1)]));
 D = kron(eye(Nx-1), Dyy)+kron(Dxx, eye(Ny-1)); DD = D*D;
-A = k^2*c^2/(1 + sigma0*k)*D;
 B = sparse((2*eye(totN)-kappa^2*k^2*DD)/(1+sigma0*k));
+A = k^2*c^2/(1 + sigma0*k)*D + B;
 I = sparse(eye(totN));
 S = (sigma0*k - 1)/(1 + sigma0*k)*I;
 
@@ -212,7 +212,7 @@ for n = 1:timeSamples
 
     % uNext = B*u-C*uPrev + k^2*Jvec*exc/coeff;
     % uNext = B*u + (k^2*c^2 + 2*sigma1*k)/(1 + sigma0*k)*D*u + (sigma0*k - 1)/(1 + sigma0*k)*I*uPrev - (2*k*sigma1)/(1 + sigma0*k)*D*uPrev + k^2*Jvec*exc/coeff;
-    uNext = B*u + A*u + S*uPrev + k^2*Jvec*exc/coeff;
+    uNext = A*u + S*uPrev + k^2*Jvec*exc/coeff;
 
     uPrev = u;
     u = uNext;
