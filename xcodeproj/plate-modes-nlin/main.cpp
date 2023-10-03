@@ -19,13 +19,16 @@ int main(int argc, const char * argv[])
 
 #define osFac 1
 #define durSec 2
-#define baseSR 44100
+#define baseSR 48000
     const unsigned int timeSamples = baseSR * osFac * durSec;
     float excit[timeSamples];
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    double SR = osFac * baseSR;
-    double k = 1.0 / SR;
+    float SR = osFac * baseSR;
+    float k = 1.0 / SR;
+    
+    float a = 30;
+    float gain = 10000.f;
     
     std::cout << "Number of Modes: " << modesNumber << '\n';
     
@@ -35,21 +38,19 @@ int main(int argc, const char * argv[])
 
     float output[timeSamples];
 
-    float x[modesNumber];
-    float xPrev[modesNumber];
-    float xNext[modesNumber];
+    float q[modesNumber] {0};
+    float p[modesNumber] {0};
 
     for (int i = 0; i < timeSamples; ++i)
     {
         excit[i] = 0.f;
         output[i] = 0.f;
-
-        if (i < modesNumber)
-        {
-            x[i] = 0.f;
-            xPrev[i] = 0.f;
-            xNext[i] = 0.f;
-        }
+    }
+    
+    for (int i = 0; i < modesNumber; ++i)
+    {
+        dampCoeffs[i] = 0.5f * k * dampCoeffs[i] / a;
+        eigenFreqs[i] = 0.5f * k * eigenFreqs[i];
     }
 
     excit[0] = 1.f;
@@ -58,20 +59,34 @@ int main(int argc, const char * argv[])
     
     for (int n = 0;  n < timeSamples; ++n)
     {
-        double exc = excit[n];
+        double exc = excit[n] * gain;
         
         for (int m = 0 ; m < modesNumber; ++m)
         {
-            float c1 = (2 - eigenFreqs[m] * eigenFreqs[m] * k * k) / (dampCoeffs[m] * k + 1.f);
-            float c2 = (dampCoeffs[m] * k - 1.f) / (dampCoeffs[m] * k + 1.f);
-            float c3 = k * k / (dampCoeffs[m] * k + 1.f);
-
-            xNext[m] = c1 * x[m] + c2 * xPrev[m] + c3 * exc * modesIn[m];
-
-            xPrev[m] = x[m];
-            x[m] = xNext[m];
+            float& omega_m =  eigenFreqs[m];
+            float& sigma_m =  dampCoeffs[m];
+            float& q_m =  q[m];
+            float& p_m =  p[m];
+            float gi_m = modesIn[m] * k;
             
-            output[n] += xNext[m] * modesOut[m];
+            float eta = (a * p_m);
+            float d = 1.0 + eta*eta;
+            float lambda = 1.0 + 3.0*eta*eta;
+            
+            float detCoeff = 1.0 / (1.0 + (sigma_m * lambda * a) + (omega_m * omega_m));
+                    float b1 = q_m + omega_m * p_m;
+                    float b2 = -omega_m * q_m + p_m + sigma_m * eta * (lambda - 2 * d) + gi_m * exc;
+
+                    float qn = detCoeff * (
+                        (1 + sigma_m * a * lambda) * b1
+                        + omega_m * b2
+                        );
+                    float pn = detCoeff * (b2 - omega_m * b1);
+            
+            q_m = qn;
+            p_m = pn;
+            
+            output[n] += q_m * modesOut[m];
         }
         
     }
@@ -106,7 +121,7 @@ int main(int argc, const char * argv[])
     }*/
 
     //audiowrite("plate-saturator-class", downsampled, timeSamples, baseSR);
-    audiowrite("plate", output, timeSamples, baseSR);
+    audiowrite("nlin_plate", output, timeSamples, baseSR);
 
     return 0;
 }
