@@ -38,6 +38,10 @@ int main(int argc, const char * argv[])
     float x[modesNumber];
     float xPrev[modesNumber];
     float xNext[modesNumber];
+    
+    float c1[modesNumber];
+    float c2[modesNumber];
+    float c3[modesNumber];
 
     for (int i = 0; i < timeSamples; ++i)
     {
@@ -49,6 +53,10 @@ int main(int argc, const char * argv[])
             x[i] = 0.f;
             xPrev[i] = 0.f;
             xNext[i] = 0.f;
+            
+            c1[i] = (2 - eigenFreqs[i] * eigenFreqs[i] * k * k) / (dampCoeffs[i] * k + 1.f);
+            c2[i] = (dampCoeffs[i] * k - 1.f) / (dampCoeffs[i] * k + 1.f);
+            c3[i] = k * k / (dampCoeffs[i] * k + 1.f);
         }
     }
 
@@ -62,11 +70,12 @@ int main(int argc, const char * argv[])
         
         for (int m = 0 ; m < modesNumber; ++m)
         {
-            float c1 = (2 - eigenFreqs[m] * eigenFreqs[m] * k * k) / (dampCoeffs[m] * k + 1.f);
-            float c2 = (dampCoeffs[m] * k - 1.f) / (dampCoeffs[m] * k + 1.f);
-            float c3 = k * k / (dampCoeffs[m] * k + 1.f);
+            //float c1 = (2 - eigenFreqs[m] * eigenFreqs[m] * k * k) / (dampCoeffs[m] * k + 1.f);
+            //float c2 = (dampCoeffs[m] * k - 1.f) / (dampCoeffs[m] * k + 1.f);
+            //float c3 = k * k / (dampCoeffs[m] * k + 1.f);
+            //xNext[m] = c1 * x[m] + c2 * xPrev[m] + c3 * exc * modesIn[m];
 
-            xNext[m] = c1 * x[m] + c2 * xPrev[m] + c3 * exc * modesIn[m];
+            xNext[m] = c1[m] * x[m] + c2[m] * xPrev[m] + c3[m] * exc * modesIn[m];
 
             xPrev[m] = x[m];
             x[m] = xNext[m];

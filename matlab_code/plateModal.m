@@ -32,8 +32,10 @@ normalizeOut = true;
 
 smSolver = false;
 
-Lx = 0.4;                       %[m] Hor length
-Ly = 0.8;                       %[m] Ver lentgh
+% Lx = 0.4;                       %[m] Hor length
+% Ly = 0.8;                       %[m] Ver lentgh
+Lx = 1;                       %[m] Hor length
+Ly = 2;                       %[m] Ver lentgh
 Lz = 5e-4;                    %[m] Thickness
 
 materialData = GetMaterialData("steel2");
