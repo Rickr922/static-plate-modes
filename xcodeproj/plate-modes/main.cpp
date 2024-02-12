@@ -17,6 +17,7 @@ int main(int argc, const char * argv[])
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     // Excitation Signal
 #define exactOsc true
+#define maxFreq 0
     
 #define osFac 1
 #define durSec 2
@@ -36,7 +37,20 @@ int main(int argc, const char * argv[])
     double k = 1.0 / SR;
     
     int modesNumber = modesNumberFull;
-
+    
+    if(maxFreq)
+    {
+        for(int i = 0; i < modesNumberFull; ++i)
+        {
+            if(eigenFreqs[i] > 2*PI*maxFreq)
+            {
+                modesNumber = i - 1;
+                break;
+            }
+                
+        }
+    }
+        
 #if !exactOsc
     // STABILITY CONDITION FOR NON EXACT OSCILLATOR!!!
     for(int i = 0; i < modesNumberFull; ++i)
