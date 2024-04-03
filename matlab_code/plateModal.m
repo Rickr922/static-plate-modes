@@ -36,11 +36,11 @@ smSolver = false;
 
 % Lx = 0.4;                       %[m] Hor length
 % Ly = 0.8;                       %[m] Ver lentgh
-Lx = 1;                       %[m] Hor length
-Ly = 2;                       %[m] Ver lentgh
+Lx = 2.5;                       %[m] Hor length
+Ly = 2.5;                       %[m] Ver lentgh
 Lz = 5e-4;                    %[m] Thickness
 
-materialData = GetMaterialData("steel2");
+materialData = GetMaterialData("gold");
 
 E = materialData(1);
 ni = materialData(2);
@@ -303,7 +303,7 @@ function g = GetMaterialData(material)
             R1 = 9.664e-3; 
             C1 = 0.1855e-3;
         case "gold"
-            E = 1.6e11;
+            E = 79e9;
             ni = 0.42;   
             rho = 7.872e3;
             R1 = 4.727e-3; 
