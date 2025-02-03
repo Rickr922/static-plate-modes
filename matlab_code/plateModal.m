@@ -36,8 +36,8 @@ smSolver = false;
 
 % Lx = 0.4;                       %[m] Hor length
 % Ly = 0.8;                       %[m] Ver lentgh
-Lx = 2.5;                       %[m] Hor length
-Ly = 2.5;                       %[m] Ver lentgh
+Lx = 3.5;                       %[m] Hor length
+Ly = 3;                       %[m] Ver lentgh
 Lz = 5e-4;                    %[m] Thickness
 
 materialData = GetMaterialData("gold");
